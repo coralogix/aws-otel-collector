@@ -1,0 +1,16 @@
+name: Test Echo Secrets
+
+on: [push]
+
+jobs:
+  echo-secrets:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Echo AWS Secrets
+      run: |
+        echo "TF_VAR_aws_access_key_id=${{ secrets.INTEG_TEST_AWS_KEY_ID }}"
+        echo "TF_VAR_aws_secret_access_key=${{ secrets.INTEG_TEST_AWS_KEY_SECRET }}"
