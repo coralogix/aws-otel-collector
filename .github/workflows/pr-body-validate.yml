@@ -17,6 +17,11 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, edited, ready_for_review]
 
+# Least-privilege: this workflow only inspects the PR body and never
+# needs write access to the repository.
+permissions:
+  contents: read
+
 env:
   LICENSE_TEXT: By submitting this pull request, I confirm that my contribution is made under the terms of the Apache 2.0 license.
 
@@ -26,10 +31,16 @@ jobs:
       steps:
         - name: Validade license content
           if: ${{ github.actor != 'dependabot[bot]' }} 
+          # The PR body is attacker-controlled. Pass it through an
+          # intermediate env var instead of interpolating it into the
+          # script (script injection), and match it as a fixed string
+          # with grep -F so it cannot inject regex metacharacters.
+          env:
+            PR_BODY: ${{ github.event.pull_request.body }}
           run: | 
-              if echo "${{ github.event.pull_request.body }}" | grep -q "${{ env.LICENSE_TEXT }}" ; then 
+              if echo "$PR_BODY" | grep -qF "$LICENSE_TEXT" ; then 
                 echo "License text found in PR body"
               else
-                echo "License text not found in PR Body. PR Body requires \"${{ env.LICENSE_TEXT }}\"" && exit 1
+                echo "License text not found in PR Body. PR Body requires \"$LICENSE_TEXT\"" && exit 1
               fi
 
